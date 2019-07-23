@@ -1,0 +1,15 @@
+{
+  "name": "icastguidance",
+  "version": "1.0.0",
+  "description": "A website hosting various tools to help game masters create content for 5th Edition Dungeons & Dragons.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "github.com/lfs48/icastguidance"
+  },
+  "author": "Lucas Schraier",
+  "license": "ISC"
+}
