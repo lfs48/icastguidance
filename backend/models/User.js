@@ -10,10 +10,6 @@ const UserSchema = new Schema({
         type: String,
         required: true
     },
-    session_token: {
-        type: String,
-        required: true
-    },
     date: {
         type: Date,
         default: Date.now
