@@ -1,0 +1,21 @@
+#navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid gray;
+    padding: 0.5em;
+}
+
+#navbar-left-container > *, #navbar-right-container > *{
+    margin-right: 0.5em;
+}
+
+#navbar-left-container ul {
+    display: flex;
+    list-style: none;
+}
+
+#navbar-container button {
+    background: none;
+    border: none;
+}
