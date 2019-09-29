@@ -10,7 +10,7 @@ export default function MonsterForm() {
         event.preventDefault();
         stateFunction(event.target.value);
     };
-    const options = Array(30).fill().map((_, i) => <option value={`${i+1}`}>{i+1}</option>);
+    const options = Array(30).fill().map((_, i) => <option key={i+4} value={`${i+1}`}>{i+1}</option>);
     return(
         <div id="monster-form-container">
             <form id="monster-form">
@@ -35,10 +35,10 @@ export default function MonsterForm() {
                     value={CR}
                     onChange={e => handleInput(e, setCR)}
                 >
-                    <option value="0">0</option>
-                    <option value="1/8">1/8</option>
-                    <option value="1/4">1/4</option>
-                    <option value="1/2">1/2</option>
+                    <option key={0} value="0">0</option>
+                    <option key={1} value="1/8">1/8</option>
+                    <option key={2} value="1/4">1/4</option>
+                    <option key={3} value="1/2">1/2</option>
                     {options}
                 </select>
                 <label
