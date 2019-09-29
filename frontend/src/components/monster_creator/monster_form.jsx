@@ -10,6 +10,11 @@ export default function MonsterForm() {
         event.preventDefault();
         stateFunction(event.target.value);
     };
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+    }
+    
     const options = Array(30).fill().map((_, i) => <option key={i+4} value={`${i+1}`}>{i+1}</option>);
     return(
         <div id="monster-form-container">
@@ -63,6 +68,11 @@ export default function MonsterForm() {
                     value={HP}
                     onChange={e => handleInput(e, setHP)}
                 ></input>
+                <button
+                    onClick={e => handleSubmit(e)}
+                >
+                    Submit
+                </button>
             </form>
         </div>
     );
