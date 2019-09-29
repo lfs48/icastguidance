@@ -1,21 +1,27 @@
 import React, {useState} from 'react';
 
 export default function MonsterForm() {
+
+    //State variables & setter methods
     const [name, setName] = useState("");
     const [CR, setCR] = useState("0");
     const [AC, setAC] = useState("");
     const [HP, setHP] = useState("");
 
+    //Set value of input fields
     const handleInput = (event, stateFunction) => {
         event.preventDefault();
         stateFunction(event.target.value);
     };
 
+    //Submit form
     const handleSubmit = (event) => {
         event.preventDefault();
     }
-    
+
+    //Generate option elements with CR from 1 to 30
     const options = Array(30).fill().map((_, i) => <option key={i+4} value={`${i+1}`}>{i+1}</option>);
+    
     return(
         <div id="monster-form-container">
             <form id="monster-form">
