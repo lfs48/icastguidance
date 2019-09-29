@@ -1,26 +1,39 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 export default function MonsterForm() {
+    const [name, setName] = useState("");
+    const [CR, setCR] = useState("0");
+    const [AC, setAC] = useState("");
+    const [HP, setHP] = useState("");
+
+    const handleInput = (event, stateFunction) => {
+        event.preventDefault();
+        stateFunction(event.target.value);
+    };
     const options = Array(30).fill().map((_, i) => <option value={`${i+1}`}>{i+1}</option>);
     return(
         <div id="monster-form-container">
             <form id="monster-form">
                 <label
-                    for="monster-name-input"
+                    htmlFor="monster-name-input"
                 >
                     Name
                 </label>
                 <input
                     id="monster-name-input"
                     type="text"
+                    value={name}
+                    onChange={e => handleInput(e, setName)}
                 ></input>
                 <label
-                    for="monster-CR-input"
+                    htmlFor="monster-CR-input"
                 >
                     CR
                 </label>
                 <select
                     id="monster-CR-input"
+                    value={CR}
+                    onChange={e => handleInput(e, setCR)}
                 >
                     <option value="0">0</option>
                     <option value="1/8">1/8</option>
@@ -29,22 +42,26 @@ export default function MonsterForm() {
                     {options}
                 </select>
                 <label
-                    for="monster-AC-input"
+                    htmlFor="monster-AC-input"
                 >
                     AC
                 </label>
                 <input
                     id="monster-AC-input"
                     type="text"
+                    value={AC}
+                    onChange={e => handleInput(e, setAC)}
                 ></input>
                 <label
-                    for="monster-HP-input"
+                    htmlFor="monster-HP-input"
                 >
                     HP
                 </label>
                 <input
                     id="monster-HP-input"
                     type="text"
+                    value={HP}
+                    onChange={e => handleInput(e, setHP)}
                 ></input>
             </form>
         </div>
