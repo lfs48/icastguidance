@@ -5,7 +5,6 @@ export default function Navbar() {
         <div id="navbar-container">
             <div id="navbar-left-container">
                 <button>Monster Creator</button>
-                <button>Damage Calculator</button>
             </div>
 
             <div id="navbar-right-container">
