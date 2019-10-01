@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {createMonster} from '../../util/entities/monsters_api_util';
+import {createMonster} from '../../util/api/monsters_api_util';
 
 export default function MonsterForm() {
 
