@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import {createMonster} from '../../util/entities/monsters_api_util';
 
 export default function MonsterForm() {
 
@@ -17,11 +18,22 @@ export default function MonsterForm() {
     //Submit form
     const handleSubmit = (event) => {
         event.preventDefault();
+        
+        const monster = {
+            name: name,
+            cr: CR,
+            author: 1,
+            type: "humanoid",
+            content: "test"
+        }
+
+        createMonster(monster)
+        .then(res => console.log(res));
     }
 
     //Generate option elements with CR from 1 to 30
     const options = Array(30).fill().map((_, i) => <option key={i+4} value={`${i+1}`}>{i+1}</option>);
-    
+
     return(
         <div id="monster-form-container">
             <form id="monster-form">
