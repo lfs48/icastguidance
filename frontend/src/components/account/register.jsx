@@ -2,11 +2,11 @@ import React from 'react';
 import {useDispatch} from 'react-redux';
 import {closeModal} from '../../actions/ui/modal_actions';
 
-export default function Login() {
+export default function Register() {
 
     const dispatch = useDispatch();
 
-    const handleLogin = (event) => {
+    const handleRegister = (event) => {
         event.preventDefault();
     }
 
@@ -32,7 +32,7 @@ export default function Login() {
                     id="password-input"
                     type="password"
                 ></input>
-                <button onClick={e => handleLogin(e)}>
+                <button onClick={e => handleRegister(e)}>
                     Log In
                 </button>
                 <button onClick={e => handleCancel(e)}>
