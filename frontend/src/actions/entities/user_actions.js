@@ -37,7 +37,7 @@ export const fetchUsers = () => (dispatch) => {
 
 export const createUser = (formUser) => (dispatch) => {
     return UsersAPIUtil.createUser(formUser).then(
-        (user) => dispatch(receiveUser(user)),
+        (res) => dispatch(receiveUser(res.data.user)),
         (errors) => dispatch(receiveSignupErrors(errors.responseJSON))
     );
 };
