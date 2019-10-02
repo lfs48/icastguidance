@@ -1,6 +1,14 @@
 import React from 'react';
 
 export default function Navbar() {
+
+    const handleRegister = (event) => {
+        
+    }
+
+    const handleLogin = (event) => {
+        
+    }
     return(
         <div id="navbar-container">
             <div id="navbar-left-container">
@@ -9,8 +17,8 @@ export default function Navbar() {
 
             <div id="navbar-right-container">
                 <span>Welcome</span>
-                <button>Register</button>
-                <button>Sign In</button>
+                <button onClick={e => handleRegister(e)}>Register</button>
+                <button onClick={e => handleLogin(e)}>Sign In</button>
             </div>
         </div>
         
