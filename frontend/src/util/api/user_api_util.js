@@ -1,23 +1,13 @@
-import $ from 'jquery';
+import axios from 'axios';
+
+export const createUser = (userData) => {
+    return axios.post('api/users/', userData);
+}
 
 export const fetchUser = (id) => {
-    return $.ajax({
-        method: 'GET',
-        url: `api/users/${id}`
-    });
+    return axios.get(`api/users/${id}`, id);
 };
 
 export const fetchUsers = () => {
-    return $.ajax({
-        method: 'GET',
-        url: 'api/users'
-    });
-};
-
-export const createUser = (user) => {
-    return $.ajax({
-        method: 'POST',
-        url: 'api/users',
-        data: { user: user }
-    });
+    return axios.get('api/users/');
 };
