@@ -7,7 +7,8 @@ export default function Navbar() {
     const dispatch = useDispatch();
 
     const handleRegister = (event) => {
-        
+        event.preventDefault();
+        dispatch(openModal("register"));
     }
 
     const handleLogin = (event) => {
