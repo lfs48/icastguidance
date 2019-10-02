@@ -1,14 +1,20 @@
 import React from 'react';
+import {useDispatch, useStore} from 'react-redux';
+import {openModal, dispatchOpenModal} from '../../actions/ui/modal_actions';
 
 export default function Navbar() {
+
+    const dispatch = useDispatch();
 
     const handleRegister = (event) => {
         
     }
 
     const handleLogin = (event) => {
-        
+        event.preventDefault();
+        dispatch(openModal("login"));
     }
+
     return(
         <div id="navbar-container">
             <div id="navbar-left-container">
