@@ -27,6 +27,7 @@ router.post('/', (req, res) => {
                         jwt.sign(payload, keys.jwtKey, { expiresIn: '7d' }, (err, token) => {
                           res.json({
                             success: true,
+                            user: {id:user.id, username: user.username},
                             token: "Bearer " + token
                           });
                         });
