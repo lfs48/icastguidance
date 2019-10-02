@@ -1,4 +1,5 @@
 import {merge} from 'lodash';
+import * as actionTypes from '../../actions/types';
 
 const modalReducer = (state = {}, action) => {
     const newState = merge({}, state);
@@ -6,6 +7,16 @@ const modalReducer = (state = {}, action) => {
 
     switch(action.type) {
         default: return state;
+
+        case (actionTypes.OPEN_MODAL): {
+            newState['component'] = action.component;
+            return newState;
+        }
+
+        case (actionTypes.CLOSE_MODAL): {
+            newState['component'] = null;
+            return newState;
+        }
     }
 }
 
