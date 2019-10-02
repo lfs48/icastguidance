@@ -1,10 +1,13 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {useDispatch} from 'react-redux';
 import {closeModal} from '../../actions/ui/modal_actions';
 
 export default function Register() {
 
     const dispatch = useDispatch();
+
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
 
     const handleRegister = (event) => {
         event.preventDefault();
@@ -13,6 +16,11 @@ export default function Register() {
     const handleCancel = (event) => {
         event.preventDefault();
         dispatch(closeModal());
+    }
+    
+    const handleInput = (event, stateFunction) => {
+        event.preventDefault();
+        stateFunction(event.target.value);
     }
 
     return(
@@ -24,6 +32,8 @@ export default function Register() {
                 <input
                     id="username-input"
                     type="text"
+                    value={username}
+                    onChange={e => handleInput(e, setUsername)}
                 ></input>
                 <label htmlFor="password-input">
                     Password
@@ -31,6 +41,8 @@ export default function Register() {
                 <input
                     id="password-input"
                     type="password"
+                    value={password}
+                    onChange={e => handleInput(e, setPassword)}
                 ></input>
                 <button onClick={e => handleRegister(e)}>
                     Log In
