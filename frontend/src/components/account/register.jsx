@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {useDispatch} from 'react-redux';
 import {closeModal} from '../../actions/ui/modal_actions';
+import {createUser} from '../../actions/entities/user_actions';
 
 export default function Register() {
 
@@ -11,6 +12,11 @@ export default function Register() {
 
     const handleRegister = (event) => {
         event.preventDefault();
+        const user = {
+            username: username,
+            password: password
+        };
+        dispatch(createUser(user));
     }
 
     const handleCancel = (event) => {
@@ -45,7 +51,7 @@ export default function Register() {
                     onChange={e => handleInput(e, setPassword)}
                 ></input>
                 <button onClick={e => handleRegister(e)}>
-                    Log In
+                    Sign Up
                 </button>
                 <button onClick={e => handleCancel(e)}>
                     Cancel
