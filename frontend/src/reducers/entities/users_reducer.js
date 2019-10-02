@@ -1,4 +1,3 @@
-  
 import { merge } from 'lodash';
 
 const usersReducer = (state = {}, action) => {
@@ -8,4 +7,6 @@ const usersReducer = (state = {}, action) => {
     switch(action.type){
         default: return state;
     }
-}
+};
+
+export default usersReducer;
