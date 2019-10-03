@@ -1,23 +1,20 @@
 import * as UsersAPIUtil from '../../util/api/user_api_util';
-
-export const RECEIVE_USER = "RECEIVE_USER";
-export const RECEIVE_ALL_USERS = "RECEIVE_ALL_USERS";
-export const RECEIVE_SIGNUP_ERRORS = "RECEIVE_SIGNUP_ERRORS";
+import * as actionTypes from '../types';
 
 // Standard actions
 
 export const receiveUser = (user) => ({
-    type: RECEIVE_USER,
+    type: actionTypes.RECEIVE_USER,
     user: user
 });
 
 export const receiveAllUsers = (users) => ({
-    type: RECEIVE_ALL_USERS,
+    type: actionTypes.RECEIVE_ALL_USERS,
     users: users
 });
 
 export const receiveSignupErrors = (errors) => ({
-    type: RECEIVE_SIGNUP_ERRORS,
+    type: actionTypes.RECEIVE_SIGNUP_ERRORS,
     errors: errors
 });
 
