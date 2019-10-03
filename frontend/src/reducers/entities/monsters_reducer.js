@@ -1,7 +1,7 @@
 import { merge } from 'lodash';
 import * as actionTypes from '../../actions/types';
 
-const usersReducer = (state = {}, action) => {
+const monstersReducer = (state = {}, action) => {
     const newState = merge({}, state);
     Object.freeze(state);
 
@@ -11,4 +11,4 @@ const usersReducer = (state = {}, action) => {
     }
 };
 
-export default usersReducer;
+export default monstersReducer;
