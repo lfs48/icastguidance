@@ -16,7 +16,7 @@ router.post('/', (req, res) => {
     .then(monster => {
         res.json({
             success: true,
-            data: monster
+            monster: monster
         });
     });
 });
