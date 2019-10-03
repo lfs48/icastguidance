@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import {createMonster} from '../../util/api/monsters_api_util';
+import {merge} from 'lodash';
 
 export default function MonsterForm() {
 
@@ -10,13 +11,27 @@ export default function MonsterForm() {
     const [AC, setAC] = useState("");
     const [HP, setHP] = useState("");
     const [speed, setSpeed] = useState(0);
-    const [STR, setSTR] = useState(10);
+    const [stats, setStats] = useState({
+        STR: 10,
+        DEX: 10,
+        CON: 10,
+        INT: 10,
+        WIS: 10,
+        CHA: 10
+    });
 
     //Set value of input fields
     const handleInput = (event, stateFunction) => {
         event.preventDefault();
         stateFunction(event.target.value);
     };
+
+    const handleStatInput = (event, stat) => {
+        event.preventDefault();
+        const newStats = merge({}, stats);
+        newStats[stat] = event.target.value;
+        setStats(newStats);
+    }
 
     //Submit form
     const handleSubmit = (event) => {
@@ -26,7 +41,7 @@ export default function MonsterForm() {
             AC: AC,
             HP: HP,
             speed: speed,
-            STR: STR
+            stats: stats
         }
         
         const monster = {
@@ -45,6 +60,23 @@ export default function MonsterForm() {
     //Generate option elements for monster types
     const typeNames = ["Aberration", "Beast", "Celestial", "Construct", "Dragon", "Elemental", "Fey", "Fiend", "Giant", "Humanoid", "Monstrosity", "Ooze", "Plant", "Undead"];
     const types = typeNames.map((type,i) => <option key={i} value={type}>{type}</option>)
+
+    const statInputs = Object.keys(stats).map( (stat) => 
+        <>
+            <label
+            htmlFor={`monster-${stat}-input`}
+            >
+                {stat}
+            </label>
+            <input
+                id={`monster-${stat}-input`}
+                type="number"
+                value={stats[stat]}
+                onChange={e => handleStatInput(e,stat)}
+            ></input>
+            <span>{Math.floor((stats[stat]-10)/2)}</span>
+        </>
+    );
 
     //Render
     return(
@@ -131,18 +163,7 @@ export default function MonsterForm() {
                 ></input>
 
                 <section id="monster-stats">
-                    <label
-                        htmlFor="monster-STR-input"
-                    >
-                        STR
-                    </label>
-                    <input
-                        id="monster-STR-input"
-                        type="number"
-                        value={STR}
-                        onChange={e => handleInput(e, setSTR)}
-                    ></input>
-                    <span>{Math.floor((STR-10)/2)}</span>
+                    {statInputs}
                 </section>
 
                 <button
