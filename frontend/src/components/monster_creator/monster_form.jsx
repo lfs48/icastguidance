@@ -1,8 +1,12 @@
 import React, {useState} from 'react';
+import {useDispatch} from 'react-redux';
 import {createMonster} from '../../util/api/monsters_api_util';
+import * as monsterActions from '../../actions/entities/monsters_actions';
 import {merge} from 'lodash';
 
 export default function MonsterForm() {
+
+    const dispatch = useDispatch();
 
     //State variables & setter methods
     const [name, setName] = useState("");
@@ -64,7 +68,7 @@ export default function MonsterForm() {
             content: JSON.stringify(content)
         }
 
-        createMonster(monster);
+        dispatch(monsterActions.createMonster(monster));
     }
 
     //Generate option elements with CR from 1 to 30
