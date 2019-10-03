@@ -26,6 +26,7 @@ export default function MonsterForm() {
         stateFunction(event.target.value);
     };
 
+    //Set value of stat inputs
     const handleStatInput = (event, stat) => {
         event.preventDefault();
         const newStats = merge({}, stats);
@@ -57,10 +58,12 @@ export default function MonsterForm() {
 
     //Generate option elements with CR from 1 to 30
     const crs = Array(30).fill().map((_, i) => <option key={i+4} value={`${i+1}`}>{i+1}</option>);
+
     //Generate option elements for monster types
     const typeNames = ["Aberration", "Beast", "Celestial", "Construct", "Dragon", "Elemental", "Fey", "Fiend", "Giant", "Humanoid", "Monstrosity", "Ooze", "Plant", "Undead"];
     const types = typeNames.map((type,i) => <option key={i} value={type}>{type}</option>)
 
+    //Generate stat blocks
     const statInputs = Object.keys(stats).map( (stat, i) => 
         <div key={i} className="stat-container">
             <label
