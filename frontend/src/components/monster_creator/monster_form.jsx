@@ -5,6 +5,7 @@ export default function MonsterForm() {
 
     //State variables & setter methods
     const [name, setName] = useState("");
+    const [type, setType] = useState("Aberration");
     const [CR, setCR] = useState("0");
     const [AC, setAC] = useState("");
     const [HP, setHP] = useState("");
@@ -23,7 +24,7 @@ export default function MonsterForm() {
             name: name,
             cr: CR,
             author: 1,
-            type: "humanoid",
+            type: type,
             content: "test"
         }
 
@@ -32,8 +33,12 @@ export default function MonsterForm() {
     }
 
     //Generate option elements with CR from 1 to 30
-    const options = Array(30).fill().map((_, i) => <option key={i+4} value={`${i+1}`}>{i+1}</option>);
+    const crs = Array(30).fill().map((_, i) => <option key={i+4} value={`${i+1}`}>{i+1}</option>);
+    //Generate option elements for monster types
+    const typeNames = ["Aberration", "Beast", "Celestial", "Construct", "Dragon", "Elemental", "Fey", "Fiend", "Giant", "Humanoid", "Monstrosity", "Ooze", "Plant", "Undead"];
+    const types = typeNames.map((type,i) => <option key={i} value={type}>{type}</option>)
 
+    //Render
     return(
         <div id="monster-form-container">
             <form id="monster-form">
@@ -62,7 +67,19 @@ export default function MonsterForm() {
                     <option key={1} value="1/8">1/8</option>
                     <option key={2} value="1/4">1/4</option>
                     <option key={3} value="1/2">1/2</option>
-                    {options}
+                    {crs}
+                </select>
+                <label
+                    htmlFor="monster-type-input"
+                >
+                    Type
+                </label>
+                <select
+                    id="monster-type-input"
+                    value={type}
+                    onChange={e => handleInput(e, setType)}
+                >
+                    {types}
                 </select>
                 <label
                     htmlFor="monster-AC-input"
