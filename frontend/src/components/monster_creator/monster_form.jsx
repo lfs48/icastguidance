@@ -10,6 +10,7 @@ export default function MonsterForm() {
     const [AC, setAC] = useState("");
     const [HP, setHP] = useState("");
     const [speed, setSpeed] = useState(0);
+    const [STR, setSTR] = useState(10);
 
     //Set value of input fields
     const handleInput = (event, stateFunction) => {
@@ -24,7 +25,8 @@ export default function MonsterForm() {
         const content = {
             AC: AC,
             HP: HP,
-            speed: speed
+            speed: speed,
+            STR: STR
         }
         
         const monster = {
@@ -127,12 +129,29 @@ export default function MonsterForm() {
                     onChange={e => handleInput(e, setSpeed)}
                     step={5}
                 ></input>
-                
+
+                <section id="monster-stats">
+                    <label
+                        htmlFor="monster-STR-input"
+                    >
+                        STR
+                    </label>
+                    <input
+                        id="monster-STR-input"
+                        type="number"
+                        value={STR}
+                        onChange={e => handleInput(e, setSTR)}
+                    ></input>
+                    <span>{Math.floor((STR-10)/2)}</span>
+                </section>
+
                 <button
                     onClick={e => handleSubmit(e)}
                 >
                     Submit
                 </button>
+
+
             </form>
         </div>
     );
