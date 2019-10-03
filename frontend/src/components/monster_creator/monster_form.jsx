@@ -61,8 +61,8 @@ export default function MonsterForm() {
     const typeNames = ["Aberration", "Beast", "Celestial", "Construct", "Dragon", "Elemental", "Fey", "Fiend", "Giant", "Humanoid", "Monstrosity", "Ooze", "Plant", "Undead"];
     const types = typeNames.map((type,i) => <option key={i} value={type}>{type}</option>)
 
-    const statInputs = Object.keys(stats).map( (stat) => 
-        <>
+    const statInputs = Object.keys(stats).map( (stat, i) => 
+        <div key={i} className="stat-container">
             <label
             htmlFor={`monster-${stat}-input`}
             >
@@ -74,8 +74,8 @@ export default function MonsterForm() {
                 value={stats[stat]}
                 onChange={e => handleStatInput(e,stat)}
             ></input>
-            <span>{Math.floor((stats[stat]-10)/2)}</span>
-        </>
+            <span key={i}>{Math.floor((stats[stat]-10)/2)}</span>
+        </div>
     );
 
     //Render
