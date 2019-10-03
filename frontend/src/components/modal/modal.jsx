@@ -12,7 +12,7 @@ export default function Modal() {
             break;
         }
         case("login"): {
-            content = <Login/>;
+            content = <Login />;
             break;
         } 
         case("register"): {
@@ -20,9 +20,13 @@ export default function Modal() {
             break;
         }
     }
-    return(
-        <div id="modal">
-            {content}
-        </div>
-    );
+    if (component) {
+        return(
+            <div id="modal" onClick={e => e.stopPropagation()}>
+                {content}
+            </div>
+        );
+    } else {
+        return (<></>);
+    }
 };
