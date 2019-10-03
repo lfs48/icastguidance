@@ -12,5 +12,5 @@ export const receiveMonster = (monster) => ({
 
 export const createMonster = (formMonster) => (dispatch) => {
     return MonstersAPIUtil.createMonster(formMonster)
-    .then(monster => dispatch(receiveMonster(monster)));
+    .then(res => dispatch(receiveMonster(res.data.monster)));
 }
