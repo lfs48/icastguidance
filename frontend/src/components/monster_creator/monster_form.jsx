@@ -9,6 +9,7 @@ export default function MonsterForm() {
     const [CR, setCR] = useState("0");
     const [AC, setAC] = useState("");
     const [HP, setHP] = useState("");
+    const [speed, setSpeed] = useState(0);
 
     //Set value of input fields
     const handleInput = (event, stateFunction) => {
@@ -22,7 +23,8 @@ export default function MonsterForm() {
 
         const content = {
             AC: AC,
-            HP: HP
+            HP: HP,
+            speed: speed
         }
         
         const monster = {
@@ -46,6 +48,7 @@ export default function MonsterForm() {
     return(
         <div id="monster-form-container">
             <form id="monster-form">
+
                 <label
                     htmlFor="monster-name-input"
                 >
@@ -57,6 +60,7 @@ export default function MonsterForm() {
                     value={name}
                     onChange={e => handleInput(e, setName)}
                 ></input>
+
                 <label
                     htmlFor="monster-CR-input"
                 >
@@ -73,6 +77,7 @@ export default function MonsterForm() {
                     <option key={3} value="1/2">1/2</option>
                     {crs}
                 </select>
+
                 <label
                     htmlFor="monster-type-input"
                 >
@@ -85,6 +90,7 @@ export default function MonsterForm() {
                 >
                     {types}
                 </select>
+
                 <label
                     htmlFor="monster-AC-input"
                 >
@@ -96,6 +102,7 @@ export default function MonsterForm() {
                     value={AC}
                     onChange={e => handleInput(e, setAC)}
                 ></input>
+
                 <label
                     htmlFor="monster-HP-input"
                 >
@@ -107,6 +114,20 @@ export default function MonsterForm() {
                     value={HP}
                     onChange={e => handleInput(e, setHP)}
                 ></input>
+
+                <label
+                    htmlFor="monster-speed-input"
+                >
+                    Speed
+                </label>
+                <input
+                    id="monster-speed-input"
+                    type="number"
+                    value={speed}
+                    onChange={e => handleInput(e, setSpeed)}
+                    step={5}
+                ></input>
+                
                 <button
                     onClick={e => handleSubmit(e)}
                 >
