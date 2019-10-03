@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {useDispatch} from 'react-redux';
 import {closeModal} from '../../actions/ui/modal_actions';
+import {login} from '../../actions/session/session_actions';
 
 export default function Login() {
 
@@ -11,6 +12,11 @@ export default function Login() {
 
     const handleLogin = (event) => {
         event.preventDefault();
+        const credentials = {
+            username: username,
+            password: password
+        };
+        dispatch(login(credentials));
     }
 
     const handleCancel = (event) => {
