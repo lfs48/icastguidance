@@ -19,6 +19,7 @@ export default function MonsterForm() {
         WIS: 10,
         CHA: 10
     });
+    const [langs, setLangs] = useState([]);
 
     //Set value of input fields
     const handleInput = (event, stateFunction) => {
@@ -34,6 +35,13 @@ export default function MonsterForm() {
         setStats(newStats);
     }
 
+    const handleLangInput = (event) => {
+        event.preventDefault();
+        const newLangs = merge([], langs);
+        newLangs.push(event.target.value);
+        setLangs(newLangs);
+    }
+
     //Submit form
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -42,7 +50,8 @@ export default function MonsterForm() {
             AC: AC,
             HP: HP,
             speed: speed,
-            stats: stats
+            stats: stats,
+            langs: langs
         }
         
         const monster = {
@@ -80,6 +89,9 @@ export default function MonsterForm() {
             <span key={i}>{Math.floor((stats[stat]-10)/2)}</span>
         </div>
     );
+
+    const langNames = ["Abyssal", "Celestial", "Common", "Draconic", "Deep Speech", "Druidic", "Dwarvish", "Elvish", "Giant", "Gith", "Gnomish", "Goblin", "Halfling", "Infernal", "Orcish", "Primordial", "Sylvan", "Undercommon", "Thieves' Cant"];
+    const langOptions = langNames.map((lang, i) => <option key={i} value={lang}>{lang}</option>)
 
     //Render
     return(
@@ -167,6 +179,22 @@ export default function MonsterForm() {
 
                 <section id="monster-stats">
                     {statInputs}
+                </section>
+
+                <section>
+                    <label
+                        htmlFor="monster-lang-input"
+                    >
+                        Languages
+                    </label>
+                    <select
+                        id="monster-lang-input"
+                        value={langs}
+                        multiple={true}
+                        onChange={e => handleLangInput(e)}
+                    >
+                        {langOptions}
+                    </select>
                 </section>
 
                 <button
