@@ -52,7 +52,8 @@ export default function MonsterForm() {
             HP: HP,
             speed: speed,
             stats: stats,
-            langs: langs
+            langs: langs,
+            skills: skills
         }
         
         const monster = {
