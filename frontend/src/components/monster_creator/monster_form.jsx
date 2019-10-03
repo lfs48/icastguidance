@@ -20,6 +20,7 @@ export default function MonsterForm() {
         CHA: 10
     });
     const [langs, setLangs] = useState([]);
+    const [skills, setSkills] = useState([]);
 
     //Set value of input fields
     const handleInput = (event, stateFunction) => {
@@ -35,11 +36,11 @@ export default function MonsterForm() {
         setStats(newStats);
     }
 
-    const handleLangInput = (event) => {
+    const handleMultiInput = (event, state, stateFunction) => {
         event.preventDefault();
-        const newLangs = merge([], langs);
-        newLangs.push(event.target.value);
-        setLangs(newLangs);
+        const newState = merge([], state);
+        newState.push(event.target.value);
+        stateFunction(newState);
     }
 
     //Submit form
@@ -92,6 +93,9 @@ export default function MonsterForm() {
 
     const langNames = ["Abyssal", "Celestial", "Common", "Draconic", "Deep Speech", "Druidic", "Dwarvish", "Elvish", "Giant", "Gith", "Gnomish", "Goblin", "Halfling", "Infernal", "Orcish", "Primordial", "Sylvan", "Undercommon", "Thieves' Cant"];
     const langOptions = langNames.map((lang, i) => <option key={i} value={lang}>{lang}</option>)
+
+    const skillNames = ["Acrobatics", "Animal Handling", "Arcana", "Athletics", "Deception", "History", "Insight", "Intimidation", "Investigation", "Medicine", "Nature", "Perception", "Performance", "Persuasion", "Religion", "Sleight of Hand", "Stealth", "Survival"];
+    const skillOptions = skillNames.map((skill, i) => <option key={i} value={skill}>{skill}</option>)
 
     //Render
     return(
@@ -174,6 +178,20 @@ export default function MonsterForm() {
                 <section>
 
                     <label
+                        htmlFor="monster-skills-input"
+                    >
+                        Skills
+                    </label>
+                    <select
+                        id="monster-skills-input"
+                        value={skills}
+                        multiple={true}
+                        onChange={e => handleMultiInput(e, skills, setSkills)}
+                    >
+                        {skillOptions}
+                    </select>
+
+                    <label
                         htmlFor="monster-lang-input"
                     >
                         Languages
@@ -182,7 +200,7 @@ export default function MonsterForm() {
                         id="monster-lang-input"
                         value={langs}
                         multiple={true}
-                        onChange={e => handleLangInput(e)}
+                        onChange={e => handleMultiInput(e, langs, setLangs)}
                     >
                         {langOptions}
                     </select>
