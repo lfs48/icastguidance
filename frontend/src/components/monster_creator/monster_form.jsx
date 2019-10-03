@@ -19,17 +19,21 @@ export default function MonsterForm() {
     //Submit form
     const handleSubmit = (event) => {
         event.preventDefault();
+
+        const content = {
+            AC: AC,
+            HP: HP
+        }
         
         const monster = {
             name: name,
             cr: CR,
             author: 1,
             type: type,
-            content: "test"
+            content: JSON.stringify(content)
         }
 
-        createMonster(monster)
-        .then(res => console.log(res));
+        createMonster(monster);
     }
 
     //Generate option elements with CR from 1 to 30
