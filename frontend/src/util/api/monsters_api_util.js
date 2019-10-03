@@ -1,9 +1,5 @@
-import $ from 'jquery';
+import axios from 'axios';
 
 export const createMonster = (monster) => {
-    return $.ajax({
-        method: 'POST',
-        url: '/api/monsters',
-        data: monster
-    });
-};
+    return axios.post('/api/monsters', monster);
+}
