@@ -6,17 +6,17 @@ export const RECEIVE_SIGNUP_ERRORS = "RECEIVE_SIGNUP_ERRORS";
 
 // Standard actions
 
-const receiveUser = (user) => ({
+export const receiveUser = (user) => ({
     type: RECEIVE_USER,
     user: user
 });
 
-const receiveAllUsers = (users) => ({
+export const receiveAllUsers = (users) => ({
     type: RECEIVE_ALL_USERS,
     users: users
 });
 
-const receiveSignupErrors = (errors) => ({
+export const receiveSignupErrors = (errors) => ({
     type: RECEIVE_SIGNUP_ERRORS,
     errors: errors
 });
