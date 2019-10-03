@@ -8,6 +8,10 @@ const monstersReducer = (state = {}, action) => {
     switch(action.type){
         default: return state;
 
+        case(actionTypes.RECEIVE_MONSTER): {
+            newState[action.monster._id] = action.monster;
+            return newState;
+        }
     }
 };
 
