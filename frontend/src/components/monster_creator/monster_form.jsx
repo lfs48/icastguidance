@@ -98,90 +98,81 @@ export default function MonsterForm() {
         <div id="monster-form-container">
             <form id="monster-form">
 
-                <label
-                    htmlFor="monster-name-input"
-                >
-                    Name
-                </label>
-                <input
-                    id="monster-name-input"
-                    type="text"
-                    value={name}
-                    onChange={e => handleInput(e, setName)}
-                ></input>
+                <section>
 
-                <label
-                    htmlFor="monster-CR-input"
-                >
-                    CR
-                </label>
-                <select
-                    id="monster-CR-input"
-                    value={CR}
-                    onChange={e => handleInput(e, setCR)}
-                >
-                    <option key={0} value="0">0</option>
-                    <option key={1} value="1/8">1/8</option>
-                    <option key={2} value="1/4">1/4</option>
-                    <option key={3} value="1/2">1/2</option>
-                    {crs}
-                </select>
-
-                <label
+                    <label
+                        htmlFor="monster-name-input"
+                    >
+                        Name
+                    </label>
+                    <input
+                        id="monster-name-input"
+                        type="text"
+                        value={name}
+                        onChange={e => handleInput(e, setName)}
+                    ></input>
+                    
+                    <label
                     htmlFor="monster-type-input"
-                >
+                    >
                     Type
-                </label>
-                <select
-                    id="monster-type-input"
-                    value={type}
-                    onChange={e => handleInput(e, setType)}
-                >
+                    </label>
+                    <select
+                        id="monster-type-input"
+                        value={type}
+                        onChange={e => handleInput(e, setType)}
+                    >
                     {types}
-                </select>
+                    </select>
+                </section>
 
-                <label
-                    htmlFor="monster-AC-input"
-                >
-                    AC
-                </label>
-                <input
-                    id="monster-AC-input"
-                    type="text"
-                    value={AC}
-                    onChange={e => handleInput(e, setAC)}
-                ></input>
+                <section>
 
-                <label
-                    htmlFor="monster-HP-input"
-                >
-                    HP
-                </label>
-                <input
-                    id="monster-HP-input"
-                    type="text"
-                    value={HP}
-                    onChange={e => handleInput(e, setHP)}
-                ></input>
+                    <label
+                        htmlFor="monster-AC-input"
+                    >
+                        AC
+                    </label>
+                    <input
+                        id="monster-AC-input"
+                        type="text"
+                        value={AC}
+                        onChange={e => handleInput(e, setAC)}
+                    ></input>
 
-                <label
-                    htmlFor="monster-speed-input"
-                >
-                    Speed
-                </label>
-                <input
-                    id="monster-speed-input"
-                    type="number"
-                    value={speed}
-                    onChange={e => handleInput(e, setSpeed)}
-                    step={5}
-                ></input>
+                    <label
+                        htmlFor="monster-HP-input"
+                    >
+                        HP
+                    </label>
+                    <input
+                        id="monster-HP-input"
+                        type="text"
+                        value={HP}
+                        onChange={e => handleInput(e, setHP)}
+                    ></input>
+
+                    <label
+                        htmlFor="monster-speed-input"
+                    >
+                        Speed
+                    </label>
+                    <input
+                        id="monster-speed-input"
+                        type="number"
+                        value={speed}
+                        onChange={e => handleInput(e, setSpeed)}
+                        step={5}
+                    ></input>
+
+                </section>
 
                 <section id="monster-stats">
                     {statInputs}
                 </section>
 
                 <section>
+
                     <label
                         htmlFor="monster-lang-input"
                     >
@@ -195,6 +186,24 @@ export default function MonsterForm() {
                     >
                         {langOptions}
                     </select>
+
+                    <label
+                        htmlFor="monster-CR-input"
+                    >
+                        CR
+                    </label>
+                    <select
+                        id="monster-CR-input"
+                        value={CR}
+                        onChange={e => handleInput(e, setCR)}
+                    >
+                        <option key={0} value="0">0</option>
+                        <option key={1} value="1/8">1/8</option>
+                        <option key={2} value="1/4">1/4</option>
+                        <option key={3} value="1/2">1/2</option>
+                        {crs}
+                    </select>
+
                 </section>
 
                 <button
