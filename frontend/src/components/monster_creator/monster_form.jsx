@@ -60,8 +60,16 @@ export default function MonsterForm() {
     //Add a trait
     const addTrait = (event) => {
         event.preventDefault();
-        const newTraits = merge([],traits);
+        const newTraits = merge([], traits);
         newTraits.push(["",""]);
+        setTraits(newTraits);
+    }
+
+    //Remove a trait
+    const removeTrait = (event, index) => {
+        event.preventDefault();
+        const newTraits = merge([], traits);
+        newTraits.splice(index,1);
         setTraits(newTraits);
     }
 
@@ -140,6 +148,7 @@ export default function MonsterForm() {
                     value={traits[i][1]}
                     onChange={e => handleTraitInput(e, i, 1)}
                 ></input>
+                <button onClick={e => removeTrait(e,i)}>X</button>
             </div>
     );
 
