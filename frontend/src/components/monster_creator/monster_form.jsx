@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {useDispatch} from 'react-redux';
 import * as monsterActions from '../../actions/entities/monsters_actions';
 import {merge} from 'lodash';
+import * as calcUtil from '../../util/calculations/calculations';
 
 export default function MonsterForm() {
 
@@ -151,6 +152,8 @@ export default function MonsterForm() {
             </div>
     );
 
+    const level = Math.max( Math.ceil(parseFloat(CR)), 1 );
+
     //Render
     return(
         <div id="monster-form-container">
@@ -292,6 +295,12 @@ export default function MonsterForm() {
 
 
             </form>
+
+            <section>
+
+                <span>{`Chance to hit this monster for a level ${level} party: ${(calcUtil.hitChance(AC,level)*100).toFixed(0)}%`}</span>
+
+            </section>
         </div>
     );
 }
