@@ -41,6 +41,7 @@ export default function MonsterForm() {
         setStats(newStats);
     }
 
+    //Set value of multiple selection select elements
     const handleMultiInput = (event, state, stateFunction) => {
         event.preventDefault();
         const newState = merge([], state);
@@ -48,6 +49,7 @@ export default function MonsterForm() {
         stateFunction(newState);
     }
 
+    //Set values of traits
     const handleTraitInput = (event, index, nameOrBody) => {
         event.preventDefault();
         const newTraits = merge([],traits);
@@ -65,7 +67,8 @@ export default function MonsterForm() {
             speed: speed,
             stats: stats,
             langs: langs,
-            skills: skills
+            skills: skills,
+            traits: traits
         }
         
         const monster = {
@@ -104,12 +107,15 @@ export default function MonsterForm() {
         </div>
     );
 
+    //Generate language options
     const langNames = ["Abyssal", "Celestial", "Common", "Draconic", "Deep Speech", "Druidic", "Dwarvish", "Elvish", "Giant", "Gith", "Gnomish", "Goblin", "Halfling", "Infernal", "Orcish", "Primordial", "Sylvan", "Undercommon", "Thieves' Cant"];
     const langOptions = langNames.map((lang, i) => <option key={i} value={lang}>{lang}</option>)
 
+    //Generate skill options
     const skillNames = ["Acrobatics", "Animal Handling", "Arcana", "Athletics", "Deception", "History", "Insight", "Intimidation", "Investigation", "Medicine", "Nature", "Perception", "Performance", "Persuasion", "Religion", "Sleight of Hand", "Stealth", "Survival"];
     const skillOptions = skillNames.map((skill, i) => <option key={i} value={skill}>{skill}</option>)
 
+    //Generate trait inputs
     const traitElements = traits.map((trait, i) => 
             <div key={i} className="trait-container">
                 <input
