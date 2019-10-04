@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 import {useDispatch} from 'react-redux';
-import {createMonster} from '../../util/api/monsters_api_util';
 import * as monsterActions from '../../actions/entities/monsters_actions';
 import {merge} from 'lodash';
 
