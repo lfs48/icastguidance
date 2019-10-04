@@ -26,6 +26,7 @@ export default function MonsterForm() {
     const [langs, setLangs] = useState([]);
     const [skills, setSkills] = useState([]);
     const [traits, setTraits] = useState([["",""]]);
+    const [actions, setActions] = useState([{name:"",type:""}]);
 
     //Set value of input fields
     const handleInput = (event, stateFunction) => {
@@ -150,6 +151,11 @@ export default function MonsterForm() {
                 ></input>
                 <button onClick={e => removeTrait(e,i)}>X</button>
             </div>
+    );
+
+    //Generate action inputs
+    const actionElements = actions.map((action,i) =>
+        <></>
     );
 
     const level = Math.max( Math.ceil(parseFloat(CR)), 1 );
@@ -292,9 +298,12 @@ export default function MonsterForm() {
                 </section>
 
                 <section>
-
                     {traitElements}
                     <button onClick={e => addTrait(e)}>Add Trait</button>
+                </section>
+
+                <section>
+                    {actionElements}
                 </section>
 
                 <button
