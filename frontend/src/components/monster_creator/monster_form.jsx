@@ -154,6 +154,15 @@ export default function MonsterForm() {
 
     const level = Math.max( Math.ceil(parseFloat(CR)), 1 );
 
+    //Variables to assign elements logic-based css classes
+
+        //Assign AC input field class based on how high it is
+        let ACclass = "AC-normal";
+        if (AC.length > 0) {
+            if (calcUtil.hitChance(AC,level) < 0.5) {ACclass = "AC-slightly-too-high"};
+            if (calcUtil.hitChance(AC,level) < 0.4) {ACclass = "AC-way-too-high"};
+        }
+
     //Render
     return(
         <div id="monster-form-container">
@@ -199,6 +208,7 @@ export default function MonsterForm() {
                         type="text"
                         value={AC}
                         onChange={e => handleInput(e, setAC)}
+                        className={ACclass}
                     ></input>
 
                     <label
