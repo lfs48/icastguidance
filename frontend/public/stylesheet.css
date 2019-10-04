@@ -17,6 +17,25 @@
         bottom: 50%;
     }
 
+/* Monster form */
+
+    .AC-normal {
+        background: none;
+        transition: background 0.5s;
+    }
+
+    .AC-slightly-too-high {
+        background: rgb(243, 184, 20);
+        border: 2px solid rgb(212, 157, 3);
+        transition: background 0.5s;
+    }
+
+    .AC-way-too-high {
+        background: rgb(189, 2, 2);
+        border: 2px solid rgb(145, 0, 0);
+        transition: background 0.5s;
+    }
+
 /* Navbar */
 
     #navbar-container {
