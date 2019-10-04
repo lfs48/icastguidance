@@ -57,6 +57,14 @@ export default function MonsterForm() {
         setTraits(newTraits);
     }
 
+    //Add a trait
+    const addTrait = (event) => {
+        event.preventDefault();
+        const newTraits = merge([],traits);
+        newTraits.push(["",""]);
+        setTraits(newTraits);
+    }
+
     //Submit form
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -265,7 +273,7 @@ export default function MonsterForm() {
                 <section>
 
                     {traitElements}
-
+                    <button onClick={e => addTrait(e)}>Add Trait</button>
                 </section>
 
                 <button
