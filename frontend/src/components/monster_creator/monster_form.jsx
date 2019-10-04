@@ -25,6 +25,7 @@ export default function MonsterForm() {
     });
     const [langs, setLangs] = useState([]);
     const [skills, setSkills] = useState([]);
+    const [traits, setTraits] = useState([["",""]]);
 
     //Set value of input fields
     const handleInput = (event, stateFunction) => {
@@ -45,6 +46,13 @@ export default function MonsterForm() {
         const newState = merge([], state);
         newState.push(event.target.value);
         stateFunction(newState);
+    }
+
+    const handleTraitInput = (event, index, nameOrBody) => {
+        event.preventDefault();
+        const newTraits = merge([],traits);
+        newTraits[index][nameOrBody] = event.target.value;
+        setTraits(newTraits);
     }
 
     //Submit form
@@ -101,6 +109,25 @@ export default function MonsterForm() {
 
     const skillNames = ["Acrobatics", "Animal Handling", "Arcana", "Athletics", "Deception", "History", "Insight", "Intimidation", "Investigation", "Medicine", "Nature", "Perception", "Performance", "Persuasion", "Religion", "Sleight of Hand", "Stealth", "Survival"];
     const skillOptions = skillNames.map((skill, i) => <option key={i} value={skill}>{skill}</option>)
+
+    const traitElements = traits.map((trait, i) => 
+            <div key={i} className="trait-container">
+                <input
+                    type="text"
+                    id={`trait-name-${i}`}
+                    placeholder="Name"
+                    value={traits[i][0]}
+                    onChange={e => handleTraitInput(e, i, 0)}
+                ></input>
+                <input
+                    type="text"
+                    id={`trait-text-${i}`}
+                    placeholder="Description"
+                    value={traits[i][1]}
+                    onChange={e => handleTraitInput(e, i, 1)}
+                ></input>
+            </div>
+    );
 
     //Render
     return(
@@ -226,6 +253,12 @@ export default function MonsterForm() {
                         <option key={3} value="1/2">1/2</option>
                         {crs}
                     </select>
+
+                </section>
+
+                <section>
+
+                    {traitElements}
 
                 </section>
 
