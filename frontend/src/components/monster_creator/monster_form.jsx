@@ -74,11 +74,19 @@ export default function MonsterForm() {
         setTraits(newTraits);
     }
 
-    //Set values of traits or actions
+    //Set values of actions
     const handleActionInput = (event, index, key) => {
         event.preventDefault();
         const newActions = merge([], actions);
         newActions[index][key] = event.target.value;
+        setActions(newActions);
+    }
+
+    //Add an action
+    const addAction = (event) => {
+        event.preventDefault();
+        const newActions = merge([], actions);
+        newActions.push({name:"",type:"",body:""});
         setActions(newActions);
     }
 
@@ -170,7 +178,7 @@ export default function MonsterForm() {
                     onChange={e => handleActionInput(e, i, 'name')}
                 ></input>
                 <select
-                    value={traits[i]['type']}
+                    value={actions[i]['type']}
                     onChange={e => handleActionInput(e, i, 'type')}
                 >
                     <option value="Attack">Attack</option>
@@ -332,6 +340,7 @@ export default function MonsterForm() {
 
                 <section>
                     {actionElements}
+                    <button onClick={e => addAction(e)}>Add Action</button>
                 </section>
 
                 <button
