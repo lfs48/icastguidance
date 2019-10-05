@@ -141,7 +141,7 @@ export default function MonsterForm() {
     const skillOptions = skillNames.map((skill, i) => <option key={i} value={skill}>{skill}</option>)
 
     //Generate trait inputs
-    const traitElements = traits.map((trait, i) => 
+    const traitElements = traits.map((_, i) => 
             <div key={i} className="trait-container">
                 <input
                     type="text"
@@ -160,7 +160,7 @@ export default function MonsterForm() {
     );
 
     //Generate action inputs
-    const actionElements = actions.map((action,i) =>
+    const actionElements = actions.map((_,i) =>
         <div key={i} className="action-container">
             <input
                     type="text"
