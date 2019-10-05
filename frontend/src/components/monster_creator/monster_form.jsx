@@ -145,14 +145,12 @@ export default function MonsterForm() {
             <div key={i} className="trait-container">
                 <input
                     type="text"
-                    id={`trait-name-${i}`}
                     placeholder="Name"
                     value={traits[i][0]}
                     onChange={e => handleTraitInput(e, i, 0)}
                 ></input>
                 <input
                     type="text"
-                    id={`trait-text-${i}`}
                     placeholder="Description"
                     value={traits[i][1]}
                     onChange={e => handleTraitInput(e, i, 1)}
