@@ -90,6 +90,14 @@ export default function MonsterForm() {
         setActions(newActions);
     }
 
+    //Remove an action
+    const removeAction = (event, index) => {
+        event.preventDefault();
+        const newActions = merge([], actions);
+        newActions.splice(index,1);
+        setActions(newActions);
+    }
+
     //Submit form
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -191,6 +199,7 @@ export default function MonsterForm() {
                     value={actions[i]['body']}
                     onChange={e => handleActionInput(e, i, 'body')}
                 ></input>
+                <button onClick={e => removeAction(e,i)}>X</button>
         </div>
     );
 
