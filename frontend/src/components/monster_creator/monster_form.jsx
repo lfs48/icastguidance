@@ -159,7 +159,7 @@ export default function MonsterForm() {
 
     //Generate trait inputs
     const traitElements = traits.map((_, i) => 
-            <div key={i} className="trait-container">
+            <li key={i}>
                 <input
                     type="text"
                     placeholder="Name"
@@ -173,12 +173,12 @@ export default function MonsterForm() {
                     onChange={e => handleTraitInput(e, i, 1)}
                 ></input>
                 <button onClick={e => removeTrait(e,i)}>X</button>
-            </div>
+            </li>
     );
 
     //Generate action inputs
     const actionElements = actions.map((_,i) =>
-        <div key={i} className="action-container">
+        <li key={i}>
             <input
                     type="text"
                     placeholder="Name"
@@ -200,7 +200,7 @@ export default function MonsterForm() {
                     onChange={e => handleActionInput(e, i, 'body')}
                 ></input>
                 <button onClick={e => removeAction(e,i)}>X</button>
-        </div>
+        </li>
     );
 
     const level = Math.max( Math.ceil(parseFloat(CR)), 1 );
@@ -343,12 +343,16 @@ export default function MonsterForm() {
                 </section>
 
                 <section>
-                    {traitElements}
+                    <ul>
+                        {traitElements}
+                    </ul>
                     <button onClick={e => addTrait(e)}>Add Trait</button>
                 </section>
 
                 <section>
-                    {actionElements}
+                    <ul>
+                        {actionElements}
+                    </ul>
                     <button onClick={e => addAction(e)}>Add Action</button>
                 </section>
 
