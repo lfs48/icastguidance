@@ -26,7 +26,7 @@ export default function MonsterForm() {
     const [langs, setLangs] = useState([]);
     const [skills, setSkills] = useState([]);
     const [traits, setTraits] = useState([["",""]]);
-    const [actions, setActions] = useState([{name:"",type:""}]);
+    const [actions, setActions] = useState([{name:"",type:"",body:""}]);
 
     //Set value of input fields
     const handleInput = (event, stateFunction) => {
@@ -72,6 +72,14 @@ export default function MonsterForm() {
         const newTraits = merge([], traits);
         newTraits.splice(index,1);
         setTraits(newTraits);
+    }
+
+    //Set values of traits or actions
+    const handleActionInput = (event, index, key) => {
+        event.preventDefault();
+        const newActions = merge([], actions);
+        newActions[index][key] = event.target.value;
+        setActions(newActions);
     }
 
     //Submit form
@@ -155,7 +163,28 @@ export default function MonsterForm() {
 
     //Generate action inputs
     const actionElements = actions.map((action,i) =>
-        <></>
+        <div key={i} className="action-container">
+            <input
+                    type="text"
+                    placeholder="Name"
+                    value={actions[i]['name']}
+                    onChange={e => handleActionInput(e, i, 'name')}
+                ></input>
+                <select
+                    value={traits[i]['type']}
+                    onChange={e => handleActionInput(e, i, 'type')}
+                >
+                    <option value="Attack">Attack</option>
+                    <option value="Saving Throw">Saving Throw</option>
+                    <option value="Nondamaging">Nondamaging</option>
+                </select>
+                <input
+                    type="text"
+                    placeholder="Description"
+                    value={actions[i]['body']}
+                    onChange={e => handleActionInput(e, i, 'body')}
+                ></input>
+        </div>
     );
 
     const level = Math.max( Math.ceil(parseFloat(CR)), 1 );
